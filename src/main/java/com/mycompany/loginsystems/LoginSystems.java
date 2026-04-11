@@ -61,7 +61,7 @@ public class LoginSystems {
         if (cell.startsWith("+27") && cell.length() <= 12) {
             System.out.println("Cell phone number successfully added.");
         } else {
-            System.out.println("Cell phone number incorrectly formatted.");
+            System.out.println("Cell phone number incorrectly formatted or does not contain international code.");
             return;
         }
 
