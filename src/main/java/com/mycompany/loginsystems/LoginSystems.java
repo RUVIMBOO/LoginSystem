@@ -75,7 +75,7 @@ public class LoginSystems {
         String loginPass = input.nextLine();
 
         if (loginUser.equals(username) && loginPass.equals(password)) {
-            System.out.println("Welcome! It is great to see you again.");
+            System.out.println("Welcome user! It is great to see you again.");
         } else {
             System.out.println("Username or password incorrect, please try again.");
         }
