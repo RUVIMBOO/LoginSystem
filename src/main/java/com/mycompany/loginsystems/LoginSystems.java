@@ -50,7 +50,7 @@ public class LoginSystems {
         if (password.length() >= 8 && hasCapital && hasNumber && hasSpecial) {
             System.out.println("Password successfully captured.");
         } else {
-            System.out.println("Password is not correctly formatted.");
+            System.out.println("Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number, and a special character.");
             return;
         }
 
