@@ -21,7 +21,7 @@ public class LoginSystems {
         if (username.contains("_") && username.length() <= 5) {
             System.out.println("Username successfully captured.");
         } else {
-            System.out.println("Username is not correctly formatted.");
+            System.out.println("Username is not correctly formatted; please ensure it contains an underscore and is no more than 5 characters.");
             return; // stops program
         }
 
