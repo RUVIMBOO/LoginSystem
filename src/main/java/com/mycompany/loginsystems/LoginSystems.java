@@ -1,130 +1,130 @@
-package com.mycompany.loginsystems;
+package com.mycompany.loginsystems; // Declares the package name for the program
 
-import java.util.Scanner;
+import java.util.Scanner; // Imports Scanner class for user input
 
-public class LoginSystems {
+public class LoginSystems { // Main class of the program
 
-    public static void main(String[] args) {
+    public static void main(String[] args) { // Main method where the program starts
 
-        Scanner input = new Scanner(System.in);
+        Scanner input = new Scanner(System.in); // Creates Scanner object for keyboard input
 
-        Login login = new Login();
+        Login login = new Login(); // Creates Login object
 
-        Message msg = new Message();
+        Message msg = new Message(); // Creates Message object
 
         // ================= REGISTER =================
 
-        System.out.println("=== REGISTER ===");
+        System.out.println("=== REGISTER ==="); // Displays register heading
 
-        System.out.print("Enter username: ");
-        String username = input.nextLine();
+        System.out.print("Enter username: "); // Prompts user to enter username
+        String username = input.nextLine(); // Stores entered username
 
-        System.out.print("Enter password: ");
-        String password = input.nextLine();
+        System.out.print("Enter password: "); // Prompts user to enter password
+        String password = input.nextLine(); // Stores entered password
 
-        System.out.print("Enter cell number: ");
-        String cell = input.nextLine();
+        System.out.print("Enter cell number: "); // Prompts user to enter cell number
+        String cell = input.nextLine(); // Stores entered cell number
 
-        String registerMessage =
-                login.registerUser(username,
-                        password,
-                        cell);
+        String registerMessage = // Stores registration result message
+                login.registerUser(username, // Sends username to registerUser method
+                        password, // Sends password to registerUser method
+                        cell); // Sends cell number to registerUser method
 
-        System.out.println(registerMessage);
+        System.out.println(registerMessage); // Displays registration result
 
         // ================= LOGIN =================
 
-        System.out.println("\n=== LOGIN ===");
+        System.out.println("\n=== LOGIN ==="); // Displays login heading
 
-        System.out.print("Enter username: ");
-        String loginUser = input.nextLine();
+        System.out.print("Enter username: "); // Prompts user to enter login username
+        String loginUser = input.nextLine(); // Stores login username
 
-        System.out.print("Enter password: ");
-        String loginPass = input.nextLine();
+        System.out.print("Enter password: "); // Prompts user to enter login password
+        String loginPass = input.nextLine(); // Stores login password
 
-        boolean loginStatus =
-                login.loginUser(loginUser,
-                        loginPass);
+        boolean loginStatus = // Stores login success or failure
+                login.loginUser(loginUser, // Sends entered username for login check
+                        loginPass); // Sends entered password for login check
 
-        System.out.println(
-                login.returnLoginStatus(loginStatus));
+        System.out.println( // Displays login status message
+                login.returnLoginStatus(loginStatus)); // Returns login message
 
         // ================= PART 2 =================
 
-        if (loginStatus) {
+        if (loginStatus) { // Checks if login was successful
 
-            System.out.println("\nWelcome to QuickChat");
+            System.out.println("\nWelcome to QuickChat"); // Welcomes user to QuickChat
 
-            int option;
+            int option; // Variable for menu option
 
-            do {
+            do { // Starts loop for menu options
 
-                System.out.println("\n===== MENU =====");
-                System.out.println("1) Send Messages");
-                System.out.println("2) Show recently sent messages");
-                System.out.println("3) Quit");
+                System.out.println("\n===== MENU ====="); // Displays menu heading
+                System.out.println("1) Send Messages"); // Displays send message option
+                System.out.println("2) Show recently sent messages"); // Displays show messages option
+                System.out.println("3) Quit"); // Displays quit option
 
-                System.out.print("Choose option: ");
+                System.out.print("Choose option: "); // Prompts user to choose option
 
-                option = input.nextInt();
-                input.nextLine();
+                option = input.nextInt(); // Stores selected option
+                input.nextLine(); // Clears Scanner buffer
 
                 // ================= SEND MESSAGE =================
 
-                if (option == 1) {
+                if (option == 1) { // Checks if user selected send message
 
-                    msg.generateMessageID();
+                    msg.generateMessageID(); // Generates message ID
 
                     // Recipient number
-                    System.out.print("Enter recipient number: ");
-                    msg.recipient = input.nextLine();
+                    System.out.print("Enter recipient number: "); // Prompts for recipient number
+                    msg.recipient = input.nextLine(); // Stores recipient number
 
-                    System.out.println(
-                            msg.checkRecipientCell(
+                    System.out.println( // Displays recipient validation result
+                            msg.checkRecipientCell( // Checks recipient cell number
                                     msg.recipient));
 
                     // Message text
-                    System.out.print("Enter message: ");
-                    msg.message = input.nextLine();
+                    System.out.print("Enter message: "); // Prompts user to enter message
+                    msg.message = input.nextLine(); // Stores message text
 
                     // Message length check
-                    if (msg.message.length() <= 250) {
+                    if (msg.message.length() <= 250) { // Checks if message is 250 characters or less
 
-                        System.out.println(
+                        System.out.println( // Displays message ready confirmation
                                 "Message ready to send.");
 
                         // Create message hash
-                        msg.createMessageHash();
+                        msg.createMessageHash(); // Creates message hash
 
                         // Message options
-                        System.out.println("\n1) Send Message");
-                        System.out.println("2) Discard Message");
-                        System.out.println("3) Store Message");
+                        System.out.println("\n1) Send Message"); // Displays send option
+                        System.out.println("2) Discard Message"); // Displays discard option
+                        System.out.println("3) Store Message"); // Displays store option
 
-                        System.out.print("Choose: ");
+                        System.out.print("Choose: "); // Prompts user to choose message action
 
-                        int sendChoice = input.nextInt();
-                        input.nextLine();
+                        int sendChoice = input.nextInt(); // Stores send option choice
+                        input.nextLine(); // Clears Scanner buffer
 
                         // Show result
-                        System.out.println(
-                                msg.SentMessage(sendChoice));
+                        System.out.println( // Displays result of message action
+                                msg.SentMessage(sendChoice)); // Calls SentMessage method
 
-                        if (sendChoice == 1) {
+                        if (sendChoice == 1) { // Checks if user selected send message
 
-                        msg.addMessageToArray();
+                        msg.addMessageToArray(); // Adds message to array
                          }
                         
                         // Print message details
-                        System.out.println(
-                                msg.printMessages());
+                        System.out.println( // Displays message details
+                                msg.printMessages()); // Calls printMessages method
 
-                    } else {
+                    } else { // Executes if message exceeds limit
 
-                        int extra =
+                        int extra = // Stores number of extra characters
                                 msg.message.length() - 250;
 
-                        System.out.println(
+                        System.out.println( // Displays error message for long text
                                 "Message exceeds 250 characters by "
                                 + extra);
                     }
@@ -133,20 +133,21 @@ public class LoginSystems {
 
                 // ================= SHOW MESSAGES =================
 
-                else if (option == 2) {
+                else if (option == 2) { // Checks if user selected show messages
 
-                    System.out.println(
+                    System.out.println( // Displays placeholder message
                             "Coming Soon.");
                 }
 
-            } while (option != 3);
-         System.out.println(
+            } while (option != 3); // Repeats menu until user chooses quit
+
+         System.out.println( // Displays total messages sent
         "Total messages sent: "
         + msg.returnTotalMessages());
          
-            System.out.println("Goodbye.");
+            System.out.println("Goodbye."); // Displays goodbye message
         }
 
-        input.close();
+        input.close(); // Closes Scanner object
     }
 }
